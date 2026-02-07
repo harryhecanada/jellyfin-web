@@ -252,6 +252,9 @@ export default function (view, params, tabContent, options) {
                     }, {
                         name: globalize.translate('Runtime'),
                         id: 'Runtime,SortName,ProductionYear'
+                    }, {
+                        name: globalize.translate('OptionFileSize'),
+                        id: 'Size,SortName,ProductionYear'
                     }],
                     callback: function () {
                         query.StartIndex = 0;

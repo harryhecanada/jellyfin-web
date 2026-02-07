@@ -1303,6 +1303,7 @@
     "OptionDisplayFolderView": "Display a folder view to show plain media folders",
     "OptionDisplayFolderViewHelp": "Display folders alongside your other media libraries. This can be useful if you'd like to have a plain folder view.",
     "OptionDvd": "DVD",
+    "OptionFileSize": "Size",
     "OptionEnableAccessFromAllDevices": "Enable access from all devices",
     "OptionEnableAccessToAllChannels": "Enable access to all channels",
     "OptionEnableAccessToAllLibraries": "Enable access to all libraries",

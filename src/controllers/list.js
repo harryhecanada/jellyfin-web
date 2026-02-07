@@ -1070,6 +1070,10 @@ class ItemsView {
             name: globalize.translate('Runtime'),
             value: [ItemSortBy.Runtime, ItemSortBy.SortName].join(',')
         });
+        sortBy.push({
+            name: globalize.translate('OptionFileSize'),
+            value: ['Size', ItemSortBy.SortName].join(',')
+        });
         return sortBy;
     }
 

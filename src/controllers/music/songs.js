@@ -192,6 +192,9 @@ export default function (view, params, tabContent) {
                     name: globalize.translate('Runtime'),
                     id: 'Runtime,AlbumArtist,Album,SortName'
                 }, {
+                    name: globalize.translate('OptionFileSize'),
+                    id: 'Size,AlbumArtist,Album,SortName'
+                }, {
                     name: globalize.translate('OptionRandom'),
                     id: 'Random,SortName'
                 }],

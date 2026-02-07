@@ -217,6 +217,9 @@ export default function (view, params, tabContent) {
                 }, {
                     name: globalize.translate('Runtime'),
                     id: 'Runtime,SeriesSortName,SortName'
+                }, {
+                    name: globalize.translate('OptionFileSize'),
+                    id: 'Size,SeriesSortName,SortName'
                 }],
                 callback: function () {
                     reloadItems(tabElement);
