@@ -24,6 +24,7 @@ import FiltersSeriesStatus from './FiltersSeriesStatus';
 import FiltersStatus from './FiltersStatus';
 import FiltersStudios from './FiltersStudios';
 import FiltersTags from './FiltersTags';
+import FiltersVideoResolutions from './FiltersVideoResolutions';
 import FiltersVideoTypes from './FiltersVideoTypes';
 import FiltersYears from './FiltersYears';
 
@@ -97,7 +98,8 @@ const FilterButton: FC<FilterButtonProps> = ({
     const open = Boolean(anchorEl);
     const id = open ? 'filter-popover' : undefined;
 
-    const { data } = useGetQueryFiltersLegacy(parentId, itemType);
+    const { data: rawData } = useGetQueryFiltersLegacy(parentId, itemType);
+    const data = rawData as (typeof rawData & { VideoResolutions?: string[] });
     const { data: studios } = useGetStudios(parentId, itemType);
 
     const handleChange =
@@ -411,6 +413,33 @@ const FilterButton: FC<FilterButtonProps> = ({
                                 <AccordionDetails>
                                     <FiltersYears
                                         yearsOptions={data.Years}
+                                        libraryViewSettings={
+                                            libraryViewSettings
+                                        }
+                                        setLibraryViewSettings={
+                                            setLibraryViewSettings
+                                        }
+                                    />
+                                </AccordionDetails>
+                            </Accordion>
+                        )}
+
+                        {data?.VideoResolutions && data?.VideoResolutions?.length > 0 && (
+                            <Accordion
+                                expanded={expanded === 'filtersVideoResolutions'}
+                                onChange={handleChange('filtersVideoResolutions')}
+                            >
+                                <AccordionSummary
+                                    aria-controls='filtersVideoResolutions-content'
+                                    id='filtersVideoResolutions-header'
+                                >
+                                    <Typography>
+                                        {globalize.translate('HeaderVideoResolutions')}
+                                    </Typography>
+                                </AccordionSummary>
+                                <AccordionDetails>
+                                    <FiltersVideoResolutions
+                                        videoResolutionsOptions={data.VideoResolutions}
                                         libraryViewSettings={
                                             libraryViewSettings
                                         }

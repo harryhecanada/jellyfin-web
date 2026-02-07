@@ -44,6 +44,7 @@ export interface Filters {
     Tags?: string[];
     VideoBasicFilter?: VideoBasicFilter[];
     VideoTypes?: VideoType[];
+    VideoResolutions?: string[];
     Years?: number[];
 }
 

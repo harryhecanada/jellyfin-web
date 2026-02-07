@@ -53,6 +53,11 @@ function renderDynamicFilters(context, result, options) {
         const delimeter = (options.settings.GenreIds || '').indexOf('|') === -1 ? ',' : '|';
         return (delimeter + (options.settings.GenreIds || '') + delimeter).indexOf(delimeter + i.Id + delimeter) !== -1;
     });
+
+    renderOptions(context, '.videoResolutionFilters', 'chkVideoResolutionFilter', result.VideoResolutions.map(i => ({ Id: i, Name: i })), function (i) {
+        const delimeter = ',';
+        return (delimeter + (options.settings.VideoResolutions || '') + delimeter).indexOf(delimeter + i.Id + delimeter) !== -1;
+    });
 }
 
 function setBasicFilter(context, key, elem) {
@@ -140,6 +145,16 @@ function saveValues(context, settings, settingsKey) {
     });
 
     userSettings.setFilter(settingsKey + '-filter-GenreIds', genres.join(','));
+
+    // Video Resolutions
+    const videoResolutions = [];
+    context.querySelectorAll('.chkVideoResolutionFilter').forEach(elem => {
+        if (elem.checked) {
+            videoResolutions.push(elem.getAttribute('data-filter'));
+        }
+    });
+
+    userSettings.setFilter(settingsKey + '-filter-VideoResolutions', videoResolutions.join(','));
 }
 function bindCheckboxInput(context, on) {
     const elems = context.querySelectorAll('.checkboxList-verticalwrap');

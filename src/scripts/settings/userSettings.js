@@ -25,7 +25,7 @@ const allowedFilterSettings = [
     'HasThemeSong', 'HasThemeVideo', 'Genres', 'OfficialRatings',
     'Tags', 'VideoTypes', 'IsSD', 'IsHD', 'Is4K', 'Is3D',
     'IsFavorite', 'IsMissing', 'IsUnaired', 'ParentIndexNumber',
-    'SeriesStatus', 'Years'
+    'SeriesStatus', 'Years', 'VideoResolutions'
 ];
 
 function filterQuerySettings(query, allowedItems) {

@@ -112,6 +112,11 @@ function modifyQueryWithFilters(instance, query) {
         query.VideoTypes = filters.VideoTypes;
     }
 
+    if (filters.VideoResolutions) {
+        hasFilters = true;
+        query.VideoResolutions = filters.VideoResolutions;
+    }
+
     if (filters.GenreIds) {
         hasFilters = true;
         query.GenreIds = filters.GenreIds;
@@ -984,7 +989,8 @@ class ItemsView {
             HasSpecialFeature: userSettings.getFilter(basekey + '-filter-HasSpecialFeature'),
             HasThemeSong: userSettings.getFilter(basekey + '-filter-HasThemeSong'),
             HasThemeVideo: userSettings.getFilter(basekey + '-filter-HasThemeVideo'),
-            GenreIds: userSettings.getFilter(basekey + '-filter-GenreIds')
+            GenreIds: userSettings.getFilter(basekey + '-filter-GenreIds'),
+            VideoResolutions: userSettings.getFilter(basekey + '-filter-VideoResolutions')
         };
     }
 

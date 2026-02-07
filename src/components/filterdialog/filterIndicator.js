@@ -22,6 +22,7 @@ function getFilterStatus(query) {
             || query.Years
             || query.OfficialRatings
             || query.IsUnaired
+            || query.VideoResolutions
     );
 }
 

@@ -133,6 +133,7 @@ export const getFiltersQuery = (
         ...getVideoBasicFilter(libraryViewSettings),
         seriesStatus: libraryViewSettings?.Filters?.SeriesStatus,
         videoTypes: libraryViewSettings?.Filters?.VideoTypes,
+        videoResolutions: libraryViewSettings?.Filters?.VideoResolutions,
         filters: libraryViewSettings?.Filters?.Status,
         genres: libraryViewSettings?.Filters?.Genres,
         officialRatings: libraryViewSettings?.Filters?.OfficialRatings,

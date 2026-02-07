@@ -57,6 +57,10 @@ function renderFilters(context, result, query) {
         const delimeter = ',';
         return (delimeter + (query.Years || '') + delimeter).includes(delimeter + i + delimeter);
     });
+    renderOptions(context, '.videoResolutionFilters', 'chkVideoResolutionFilter', merge(result.VideoResolutions, query.VideoResolutions, ','), function (i) {
+        const delimeter = ',';
+        return (delimeter + (query.VideoResolutions || '') + delimeter).includes(delimeter + i + delimeter);
+    });
 }
 
 function loadDynamicFilters(context, apiClient, userId, itemQuery) {
@@ -108,6 +112,12 @@ function updateFilterControls(context, options) {
         const filterName = elem.getAttribute('data-filter');
         elem.checked = filters.includes(`,${filterName}`);
     }
+
+    for (const elem of context.querySelectorAll('.chkVideoResolutionFilter')) {
+        const filters = `,${query.VideoResolutions || ''}`;
+        const filterName = elem.getAttribute('data-filter');
+        elem.checked = filters.includes(`,${filterName}`);
+    }
 }
 
 /**
@@ -128,6 +138,7 @@ function setVisibility(context, options) {
         context.querySelector('.officialRatingFilters').classList.remove('hide');
         context.querySelector('.tagFilters').classList.remove('hide');
         context.querySelector('.yearFilters').classList.remove('hide');
+        context.querySelector('.videoResolutionFilters').classList.remove('hide');
     }
 
     if (options.mode === 'movies' || options.mode === 'episodes') {
@@ -394,6 +405,23 @@ class FilterDialog {
                 }
                 query.StartIndex = 0;
                 query.Years = filters;
+                triggerChange(this);
+                return;
+            }
+            const chkVideoResolutionFilter = dom.parentWithClass(e.target, 'chkVideoResolutionFilter');
+            if (chkVideoResolutionFilter) {
+                const filterName = chkVideoResolutionFilter.getAttribute('data-filter');
+                let filters = query.VideoResolutions || '';
+                const delimiter = ',';
+                filters = filters
+                    .split(delimiter)
+                    .filter((f) => f !== filterName)
+                    .join(delimiter);
+                if (chkVideoResolutionFilter.checked) {
+                    filters = filters ? (filters + delimiter + filterName) : filterName;
+                }
+                query.StartIndex = 0;
+                query.VideoResolutions = filters;
                 triggerChange(this);
                 return;
             }
